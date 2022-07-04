@@ -1,50 +1,30 @@
-var audio = new Audio("jquery.mp3");
-
-$(document).ready(function() {
-    if (localStorage.getItem("jqueeery") == null){
-        $("#counter").html("Вы нажали: " + 0)
-    } else {
-        $("#counter").html("Вы нажали: " + localStorage.getItem("jqueeery"))
-    }
-
-})
-
-async function ballSh() {
-    var photo =  document.getElementById('photo').classList
-    
-
-    photo.toggle("shake");
-
-    setTimeout(function() {
-        photo.remove("shake");
-    }, 2000);
-}
-
-function delay(ms) {
-    const date = Date.now();
-    let currentDate = null;
- 
-    do {
-        currentDate = Date.now();
-    } while (currentDate - date < ms);
-}
-$( "#photo" ).click(function() {
-    
-    audio.play();
-    if (localStorage.getItem("jqueeery") === null) {
-        localStorage.setItem("jqueeery",1)
-    } else {
-        localStorage.setItem("jqueeery",parseInt(localStorage.getItem("jqueeery"))+1)
-    }
-
-    ballSh()
-    $("#counter").html("Вы нажали: " + localStorage.getItem("jqueeery"))
-});
-
-// --------------------------------------------
-
 let keyword = ''
 const SECRET_KEYWORD = 'jquery'
+
+const audio = new Audio("jquery.mp3")
+
+$(document).ready(() => $("#counter").html(`${!localStorage.getItem("jqueeery") ? '0' : localStorage.getItem("jqueeery")}`))
+
+const animateImage = () => {
+    const photo = $('img')[0].classList
+
+    photo.add("shake")
+    setTimeout(() => (photo.remove("shake")), 500)
+}
+
+const updateCounter = () => {
+    const counter = localStorage.getItem("jqueeery")
+    localStorage.setItem("jqueeery", counter ? 1 + +counter : 1)
+    $("#counter").html(`${localStorage.getItem("jqueeery")}`)
+}
+
+const makeJquery = () => {
+    audio.play()
+    updateCounter()
+    animateImage()
+}
+
+$("img").click(makeJquery)
 
 document.addEventListener('keydown', e => {
     if (keyword.length >= 6)
@@ -52,7 +32,6 @@ document.addEventListener('keydown', e => {
     keyword += e.code.split('Key')[1]?.toLowerCase()
 
     if (keyword === SECRET_KEYWORD)
-        audio.play()
-
-    setTimeout(() => (keyword = ''), 2000)
+        makeJquery()
+    setTimeout(() => (keyword = ''), 1000)
 })
