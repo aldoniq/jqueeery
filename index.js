@@ -41,3 +41,18 @@ $( "#photo" ).click(function() {
     $("#counter").html("Вы нажали: " + localStorage.getItem("jqueeery"))
 });
 
+// --------------------------------------------
+
+let keyword = ''
+const SECRET_KEYWORD = 'jquery'
+
+document.addEventListener('keydown', e => {
+    if (keyword.length >= 6)
+        keyword = ''
+    keyword += e.code.split('Key')[1]?.toLowerCase()
+
+    if (keyword === SECRET_KEYWORD)
+        audio.play()
+
+    setTimeout(() => (keyword = ''), 2000)
+})
