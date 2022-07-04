@@ -5,21 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQueeery</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="IMG_2280.png">
 
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./icon.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" defer></script>
+    <script src="index.js" defer></script>
 </head>
 <body>
-    <div class="centered">
-        <p id="counter" style="color: white;">Вы нажали: </p>
-        <img id="photo" class="img-wrapper" src="My project.png" alt="" width="90%" height="85%">
-        
-    </div>
-    <footer style="color: white;">
-        copyright © - <a class="instaLink" target="_blank" href="https://www.instagram.com/aldoniq/">@aldoniq</a> - <a class="instaLink" target="_blank" href="https://www.instagram.com/arzhkhnh/">arzhkhnh</a>
+    <main>
+        <h2>Вы нажали: <span id="counter">0</span></h2>
+        <div class="mainImage">
+            <img src="My project.png" alt="Group photo">
+        </div>
+    </main>
+    <footer>
+        <p id="legal">
+            ©Copyright:
+            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/aldoniq/">aldoniq</a>,
+            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/arzhkhnh/">arzhkhnh</a>,
+            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/iwa_tenshi/">iwa_tenshi</a>
+        </p>
     </footer>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script src="index.js"></script>
-
 </html>
